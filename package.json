@@ -1,0 +1,78 @@
+{
+  "name": "@ragib.mrb/bugfinder",
+  "version": "0.1.0",
+  "description": "Every click becomes a story across browser, server and database, with the likely cause and a bug report you can copy. One line for Express.",
+  "license": "MIT",
+  "author": "Ragib MRB",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ragib-mrb/bugfinder.git"
+  },
+  "homepage": "https://github.com/ragib-mrb/bugfinder#readme",
+  "bugs": {
+    "url": "https://github.com/ragib-mrb/bugfinder/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "debugging",
+    "bug-report",
+    "express",
+    "developer-tools",
+    "full-stack",
+    "request-tracing",
+    "mongoose",
+    "mysql2",
+    "error-tracking"
+  ],
+  "scripts": {
+    "build:client": "node scripts/build-client.mjs",
+    "build": "npm run build:client && tsup",
+    "typecheck": "npm run build:client && tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run build:client && vitest run",
+    "example": "npm run build && node examples/shop.mjs"
+  },
+  "peerDependencies": {
+    "express": ">=4.17.0 <6"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/express": "5.0.6",
+    "@types/node": "26.6.6",
+    "@types/supertest": "7.2.1",
+    "eslint": "10.13.0",
+    "express": "5.3.0",
+    "express4": "npm:express@4.22.3",
+    "mongoose": "9.11.4",
+    "mysql2": "3.24.6",
+    "prettier": "3.9.10",
+    "supertest": "7.3.1",
+    "tsup": "9.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.0.5"
+  }
+}

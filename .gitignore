@@ -1,0 +1,74 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.test-accounts.local
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+*.provisionprofile
+google-services.json
+GoogleService-Info.plist
+serviceAccount*.json
+credentials.json
+
+# Dependencies (any depth, including inside app/)
+node_modules/
+.pnp.*
+.venv/
+venv/
+__pycache__/
+
+# Build output and caches
+dist/
+build/
+out/
+.next/
+.expo/
+.expo-shared/
+web-build/
+coverage/
+bin/
+obj/
+*.tsbuildinfo
+.cache/
+.gradle/
+.dart_tool/
+DerivedData/
+**/ios/Pods/
+**/android/app/build/
+
+# Local data
+mongo-data/
+data/db/
+docker-compose.override.yml
+compose.override.yaml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# OS and editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.suo
+*.user
+
+# Packed releases
+*.tgz
+
+# Generated
+src/client/bundle.generated.ts
+src/ui/app.generated.ts
+.client-build/
+*.tgz
