@@ -132,6 +132,8 @@ npm test
 npm run example   # demo shop with planted bugs on http://localhost:3078
 ```
 
+Want to help? See [CONTRIBUTING.md](CONTRIBUTING.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 [MIT](LICENSE)

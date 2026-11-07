@@ -1,0 +1,31 @@
+name: Bug report
+description: Something doesn't work as the README says
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead. A wrong "likely cause" counts too.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The smallest Express app that shows the problem helps most. A bug report copied from the story page is also great (check it for private data first).
+      render: js
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: bugfinder 0.1.0, Express 5.1.0, Node 22.12.0, Mongoose 9.0.0 / mysql2 3.x
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS and browser
+      placeholder: Windows 11, Chrome 140
