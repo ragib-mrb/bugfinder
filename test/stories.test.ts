@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { appFrame, cleanStack, redact } from '../src/redact.js';
 import { buildStories, findCause } from '../src/stories.js';
 import { injectTag } from '../src/inject.js';
-import type { BugEvent } from '../src/types.js';
+import { buildReport } from '../src/report.js';
+import type { BugEvent, Story } from '../src/types.js';
 
 let id = 0;
 const ev = (e: Partial<BugEvent>): BugEvent => ({
@@ -168,5 +169,31 @@ describe('helpers', () => {
     expect(injectTag('<body>x</body>', tag)).toBe(`<body>x${tag}</body>`);
     expect(injectTag('x', tag)).toBe(`${tag}x`);
     expect(injectTag(`<head>${tag}</head>`, tag)).toBe(`<head>${tag}</head>`);
+  });
+
+  it('formats OS in Environment section of bug report when specified', () => {
+    const dummyStory: Story = {
+      id: 'test-story',
+      type: 'action',
+      t: 1000,
+      title: 'Failed checkout',
+      events: [],
+      status: 'error',
+    };
+    const reportWithOs = buildReport(dummyStory, {
+      origin: 'http://localhost:3000',
+      os: 'linux x64',
+      node: 'v22.0.0',
+    });
+    expect(reportWithOs).toContain('### Environment');
+    expect(reportWithOs).toContain('- OS: linux x64');
+    expect(reportWithOs).toContain('- Node v22.0.0');
+
+    const reportWithoutOs = buildReport(dummyStory, {
+      origin: 'http://localhost:3000',
+      node: 'v22.0.0',
+    });
+    expect(reportWithoutOs).not.toContain('OS:');
+    expect(reportWithoutOs).toContain('- Node v22.0.0');
   });
 });

@@ -167,6 +167,7 @@ describe.each(versions)('%s', (_name, pkg) => {
     expect(md).toContain('"password":"[hidden]"');
     expect(md).not.toContain('hunter2');
     expect(md).toContain('library frame');
+    expect(md).toContain(`OS: ${process.platform} ${process.arch}`);
     await request(app).get('/__bugfinder/report/nope').expect(404);
   });
 

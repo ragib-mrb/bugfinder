@@ -195,7 +195,12 @@ async function handleOwn(
     if (!story) return sendError(res, 404, 'not_found', 'That story is no longer in memory.');
     const host = String(req.headers.host ?? 'localhost');
     const userAgent = story.events.find((e) => e.kind === 'action')?.data?.userAgent as string | undefined;
-    const md = buildReport(story, { origin: `http://${host}`, node: process.version, userAgent });
+    const md = buildReport(story, {
+      origin: `http://${host}`,
+      os: `${process.platform} ${process.arch}`,
+      node: process.version,
+      userAgent,
+    });
     return send(res, 200, 'text/markdown; charset=utf-8', md);
   }
   if (req.method === 'POST' && sub === '/events') {
