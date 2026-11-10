@@ -23,7 +23,7 @@ const offset = (story: Story, e: BugEvent) => `+${((e.t - story.t) / 1000).toFix
 /** A Markdown bug report: what happened, steps to reproduce, the failing request, the error and the logs. */
 export function buildReport(
   story: Story,
-  options: { origin: string; node?: string; userAgent?: string },
+  options: { origin: string; os?: string; node?: string; userAgent?: string },
 ): string {
   const lines: string[] = [];
   const steps = story.events.filter((e) => e.kind === 'action');
@@ -79,6 +79,7 @@ export function buildReport(
     );
   }
   const env = [
+    options.os && `OS: ${options.os}`,
     options.node && `Node ${options.node}`,
     options.userAgent && `Browser: ${options.userAgent}`,
   ].filter(Boolean);

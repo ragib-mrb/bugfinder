@@ -4,6 +4,8 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [Unreleased]
 
+- Report: include operating system in Environment section (#4)
+
 ## [0.1.0] - 2026-11-06
 
 First release.
